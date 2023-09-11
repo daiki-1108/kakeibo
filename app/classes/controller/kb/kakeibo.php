@@ -30,8 +30,12 @@ class Controller_Kb_Kakeibo extends Controller
         ));
         $All_Total = Arr::sum($posts, 'amount');
 
-        $sql_1 = Model_Record::find('all', array('related' => array('category_name'), 'where' => array('category_id' => 1)));
+        $sql_1 = Model_Record::find('all', array(
+            'where' => array('category_id' => 1),
+            'where' => array('user_id' => $userid),
+        ));
         $total_1 = Arr::sum($sql_1, 'amount');
+        
         $sql_2 = DB::select()->from('record')->where('category_id', 2)->execute();
         $total_2 = Arr::sum($sql_2, 'amount');
         $sql_3 = DB::select()->from('record')->where('category_id', 3)->execute();
