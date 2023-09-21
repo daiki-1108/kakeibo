@@ -30,23 +30,19 @@ class Controller_Kb_Kakeibo extends Controller
         ));
         $All_Total = Arr::sum($posts, 'amount');
 
-        $sql_1 = Model_Record::find('all', array(
-            'where' => array('category_id' => 1),
-            'where' => array('user_id' => $userid),
-        ));
+        $sql_1 = DB::select()->from('record')->where_open()->where('category_id', '=', 1)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_1 = Arr::sum($sql_1, 'amount');
-        
-        $sql_2 = DB::select()->from('record')->where('category_id', 2)->execute();
+        $sql_2 = DB::select()->from('record')->where_open()->where('category_id', '=', 2)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_2 = Arr::sum($sql_2, 'amount');
-        $sql_3 = DB::select()->from('record')->where('category_id', 3)->execute();
+        $sql_3 = DB::select()->from('record')->where_open()->where('category_id', '=', 3)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_3 = Arr::sum($sql_3, 'amount');
-        $sql_4 = DB::select()->from('record')->where('category_id', 4)->execute();
+        $sql_4 = DB::select()->from('record')->where_open()->where('category_id', '=', 4)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_4 = Arr::sum($sql_4, 'amount');
-        $sql_5 = DB::select()->from('record')->where('category_id', 5)->execute();
+        $sql_5 = DB::select()->from('record')->where_open()->where('category_id', '=', 5)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_5 = Arr::sum($sql_5, 'amount');
-        $sql_6 = DB::select()->from('record')->where('category_id', 6)->execute();
+        $sql_6 = DB::select()->from('record')->where_open()->where('category_id', '=', 6)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_6 = Arr::sum($sql_6, 'amount');
-        $sql_7 = DB::select()->from('record')->where('category_id', 7)->execute();
+        $sql_7 = DB::select()->from('record')->where_open()->where('category_id', '=', 7)->and_where('user_id', '=', $userid)->where_close()->execute();
         $total_7 = Arr::sum($sql_7, 'amount');
        
         $data = array(
@@ -107,8 +103,8 @@ class Controller_Kb_Kakeibo extends Controller
             'order_by' => array('category_id' => 'asc'),
             'where' => array(
                 array('id' , $id), 
+                array('user_id' => $userid),
             ),
-            'where' => array('user_id' => $userid),
         )); 
         $data = array(
             'posts' => $posts,
@@ -130,7 +126,7 @@ class Controller_Kb_Kakeibo extends Controller
                 //保存
                 $edit_data->save();
                 
-                return View::forge('kakeibo/editForm/', $data);
+                return View::forge('kakeibo/editForm', $data);
                 exit;
             }
             else{    #失敗の場合の処理
@@ -140,7 +136,7 @@ class Controller_Kb_Kakeibo extends Controller
                 exit;
             }
             }
-        return View::forge('kakeibo/editForm/', $data);
+        return View::forge('kakeibo/editForm', $data);
     }
 
 
@@ -158,8 +154,9 @@ class Controller_Kb_Kakeibo extends Controller
             
             'where' => array(
                 array('category_id' , $category_id),
+                array('user_id' => $userid),
             ),
-            'where' => array('user_id' => $userid),
+            
         ));
         $total = Arr::sum($posts, 'amount');
         $data = array(

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo Asset::css('loginstyle.css'); ?>
+    <?php echo Asset::css('back.css'); ?>
     <title>ログイン</title>
 </head>
 <body>
-
+<div class="colorchangeanime_bg">
 <div class="container">
     <div class="row">
             <?php if (isset($error)): ?>
@@ -50,6 +51,7 @@
         
                 
     </div>
+</div>
 </div>
 
 </body>
