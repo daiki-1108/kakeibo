@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>家計簿</title>
-    <script type='text/javascript'  src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.1.js"></script>
-    <script src="kakeibo.js"></script>
     <?php echo Asset::css('indexstyle.css'); ?>
     <?php echo Asset::css('back.css'); ?>
 </head>
@@ -60,14 +58,16 @@
               <?php endif; ?>
             <?php endforeach; ?>
         </table>
-
-        </div>   
-
-  <div id="like_button_container"></div>
+        
+        <div id="like_button_container"></div>
+</div>   
   
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="like_button.js"></script>
+  <?php echo Asset::js('like_button.js'); ?>
+
+  <script type='text/javascript'  src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js"></script>
+    <?php echo Asset::js('kakeibo.js'); ?>
 
 </body>
 </html>

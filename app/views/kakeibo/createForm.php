@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新規入力</title>
-    <script type='text/javascript'  src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.1.js"></script>
-    <script src="kakeibo.js"></script>
     <?php echo Asset::css('indexstyle.css'); ?>
     <?php echo Asset::css('back.css'); ?>
 </head>
@@ -59,5 +57,9 @@
                  }
               ?>
   </div>    
+
+  <script type='text/javascript'  src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.5.0.js"></script>
+    <?php echo Asset::js('kakeibo.js'); ?>
+    
 </body>
 </html>
