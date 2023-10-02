@@ -78,7 +78,7 @@ class Controller_Kb_login extends Controller
                 }
             }
                      // ログイン失敗時の処理
-                   // $error = 'ログインに失敗しました';
+                   // $error = 'ログインに失敗しました';:
             
     }
 
